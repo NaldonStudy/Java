@@ -1,41 +1,26 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringTokenizer;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		HashMap<Integer, Integer> checklist = new HashMap<>();//해쉬 맵
+		for (int i = 0; i < a; i++) {
+			int num = sc.nextInt();
+			checklist.put(num, checklist.getOrDefault(num, 0) + 1);//put(num, a)->num(key),a(value)를 넣음
+		}//a.getordefault(b,defaultvalue)->a 에서 키가 b인 value값 없다면 default값 
+		int b = sc.nextInt();
+		int[] checking = new int[b];
+		for (int i = 0; i < b; i++) {
+			checking[i] = sc.nextInt();
+		}
+		for (int i = 0; i < b; i++) {
+			if (checklist.get(checking[i]) == null)//없는 key값을 찾으면 value는 null이 나오니까 
+				System.out.println(0);//없으면 0출력
+			else
+				System.out.println(1);//값이 있으면 1 출력
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        int N = Integer.parseInt(br.readLine());
-        
-        Set<Integer> nSet = new HashSet<>();
-        
-        StringTokenizer nInput = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++) {
-            nSet.add(Integer.parseInt(nInput.nextToken()));
-        }
-        
-        int M = Integer.parseInt(br.readLine());
-        
-        StringTokenizer mInput = new StringTokenizer(br.readLine());
-        
-        for (int i = 0; i < M; i++) {
-            int num = Integer.parseInt(mInput.nextToken());
-            if (nSet.contains(num)) { // contains는 true,false를 반환한다. indexof처럼 위치반환안함
-                bw.write(1 + "\n");
-            } else {
-                bw.write(0 + "\n");
-            }
-        }
-        
-        bw.flush();
-        bw.close();
-    }
+		}
+	}
 }
