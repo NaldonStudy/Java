@@ -1,3 +1,7 @@
+//### 성능 요약
+
+//		메모리: 14540 KB, 시간: 108 ms
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
