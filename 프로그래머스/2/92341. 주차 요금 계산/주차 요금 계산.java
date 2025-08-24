@@ -1,3 +1,6 @@
+//성능 요약
+//메모리: 90.5 MB, 시간: 7.06 ms
+
 import java.util.*;
 
 class Solution {
