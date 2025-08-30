@@ -1,3 +1,6 @@
+// 메모리: 14280 KB
+// 시간: 108 ms
+
 import java.io.*;
 import java.util.StringTokenizer;
 
