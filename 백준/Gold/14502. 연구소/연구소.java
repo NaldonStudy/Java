@@ -1,5 +1,4 @@
-// LinkedList 메모리: 298300 KB, 시간: 1076 ms
-// ArrayDeque 메모리: 311112 KB, 시간: 1164 ms
+import org.w3c.dom.Node;
 
 import java.io.*;
 import java.util.*;
@@ -70,10 +69,6 @@ public class Main {
     }
 
     static void bfs() {
-
-        // 둘 다 해봤다. 근데 이게 Queue에 대해 새로 선언해주는 횟수가 적으면 ArrayDeque가 유리한데 여러번 호출하면 배열 확정 + 복사가 발생한다.
-        // LinkedList는 노드 단위로 붙여서 리사이즈 복사 비용이 없음. 즉 고반복, 재선언이 많은 경우엔 LinkedList가 유리하다.
-        //Queue<Node> q = new ArrayDeque<Node>();
         Queue<Node> q = new LinkedList<Node>();
 
         for(int row = 0; row < N; row++) {
@@ -126,4 +121,3 @@ public class Main {
         if(safeArea > res) res = safeArea;
     }
 }
-
