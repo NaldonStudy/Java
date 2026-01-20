@@ -1,0 +1,36 @@
+class Solution {
+    public int solution(int m, int n, int[][] puddles) {
+        int[][] dp = new int[n+1][m+1];
+        
+        // 웅덩이는 -1
+        for(int[] puddle : puddles) {
+            dp[puddle[1]][puddle[0]] = -1;
+        }
+        
+        dp[1][1] = 1;
+        
+        for(int i = 1; i <= n; i++) { 
+            for(int j = 1; j <= m; j++) {
+                
+                // 웅덩이면 넘어감. 0으로 해야 다른거에 영향안줌
+                if(dp[i][j] == -1) {
+                    dp[i][j] = 0;
+                    continue;
+                }
+                
+                // 위에서 아래로
+                if(i > 0) {
+                    dp[i][j] += dp[i-1][j];
+                    dp[i][j] %= 1000000007;
+                }
+                
+                // 왼쪽에서 오른쪽으로
+                if(j > 0) {
+                    dp[i][j] += dp[i][j-1];
+                    dp[i][j] %= 1000000007;
+                }
+            }
+        }
+        return dp[n][m];
+    }
+}
